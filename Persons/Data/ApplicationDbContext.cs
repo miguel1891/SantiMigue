@@ -15,7 +15,7 @@ namespace Persons.Data
         {
             //esto se asegura que cuando iniciás la APP por primera vez, exista la DB y las tablas
             //si no existe, la crea
-            Database.EnsureCreated();
+            Database.EnsureCreated(); 
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
