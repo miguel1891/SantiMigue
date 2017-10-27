@@ -12,7 +12,8 @@ using Persons.Data;
 using Persons.Models;
 using Persons.Services;
 
-// que mierda hace esto!
+// que mierda hace esto! -- ?? 
+// esto es el inicio de la aplicación; por ejemplo, configura la conexión a la base de datos
 
 namespace Persons
 {
