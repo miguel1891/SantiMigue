@@ -3,6 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-Persons-FFCA8A8C-F3EA-4519-845D-64B33760D9AB</UserSecretsId>
+    <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
+    <Authors>Miguel Gonzalez &amp; Santiago Berreta</Authors>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
   </PropertyGroup>
 
 
