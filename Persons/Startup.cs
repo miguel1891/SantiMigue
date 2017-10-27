@@ -12,6 +12,8 @@ using Persons.Data;
 using Persons.Models;
 using Persons.Services;
 
+// que mierda hace esto!
+
 namespace Persons
 {
     public class Startup
