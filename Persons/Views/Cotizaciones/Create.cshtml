@@ -1,0 +1,76 @@
+﻿@model Persons.Models.Cotizaciones
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Cotizaciones</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="myForm" name="myForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IDMoneda" class="control-label"></label>
+                <select asp-for="IDMoneda" class ="form-control" asp-items="ViewBag.IDMoneda"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="BtnObtenerCotizacionBCU" type="button" class="btn-success" value="Cotización BCU" onclick="CotizacionesBCU()" />
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Cotizacion" class="control-label"></label>
+                <input asp-for="Cotizacion" class="form-control" />
+                <span asp-validation-for="Cotizacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+ <script> 
+    function CotizacionesBCU() {
+        var formData = $("#myForm").serializeArray();;
+        Pace.start;
+
+        $.ajax({
+            type: "POST",
+            url: "/Cotizaciones/ObtenerCotizacionesBCUAsync",
+            data: formData,
+            dataType: "json",
+            async: true,
+            success: function (msg) {
+                var data = $.parseJSON(msg);
+                var miValor = data.tc.toString();
+                console.log(data.error);
+                console.log(data.mensaje);
+                if (data.status == 0) {
+                    alert(data.mensaje)
+                } else {
+                    miValor = miValor.replace('.', ',');
+                    $("#Cotizacion").val(miValor);
+                }
+                Pace.stop;
+            },
+            error: function () {
+                return "error";
+                Pace.stop;
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Persons.Models.Cotizaciones>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th> 
+                <th>
+                    @Html.DisplayNameFor(model => model.Moneda)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cotizacion)
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moneda.Sigla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cotizacion)
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IDCotizacion">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IDCotizacion">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IDCotizacion">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

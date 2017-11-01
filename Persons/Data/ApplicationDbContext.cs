@@ -24,8 +24,20 @@ namespace Persons.Data
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
-        }
 
-        public DbSet<Persons.Models.PersonsData> PersonsData { get; set; }
+            builder.Entity<MonedasData>()
+                .HasKey(m => new { m.IDMoneda });
+
+            builder.Entity <Cotizaciones>()
+                .HasKey(c => new { c.IDCotizacion });
+        
+
+    }
+
+    public DbSet<Persons.Models.PersonsData> PersonsData { get; set; }
+
+    public DbSet<Persons.Models.MonedasData> Monedas { get; set; } 
+
+    public DbSet<Persons.Models.Cotizaciones> Cotizaciones { get; set; }
     }
 }
